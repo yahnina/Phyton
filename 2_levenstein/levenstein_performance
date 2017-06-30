@@ -1,0 +1,33 @@
+import levenstein
+import distance
+import datetime
+# encoding: utf-8
+
+
+levDuration=[]
+
+cases =[['ночь', 'дочь'], ['', 'день'],['дочка', 'ор'],['день', 'день'],['олень', 'день'],['день', 'day']]
+    #[['11', '22'], ['111', '222'],['1111', '2222'],['11111', '22222'],['111111', '222222'],['1111111', '2222222'],['11111111', '22222222'],
+     #    ['111111111', '222222222'],['1111111111', '2222222222']]
+
+b=levenstein.Levenshtein()
+
+for i in cases:
+    levStart = datetime.datetime.now()
+    b.getDistance(i[0],i[1])
+    levFinish = datetime.datetime.now()
+    a=levFinish-levStart
+    print(a.microseconds)
+    levDuration.append(a)
+
+print(levDuration)
+
+for i in cases:
+    levStart = datetime.datetime.now()
+    distance.levenshtein(i[0],i[1])
+    levFinish = datetime.datetime.now()
+    a=levFinish-levStart
+    print(a.microseconds)
+    levDuration.append(a)
+
+print(levDuration)
